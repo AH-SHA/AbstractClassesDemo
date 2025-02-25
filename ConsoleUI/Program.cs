@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,19 +34,79 @@ namespace ConsoleUI
             */
 
             // Create a list of Vehicle called vehicles
+            var vehicles = new List<Vehicle>();
 
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
-             * 
-             * Set the properties values with object initializer syntax
              */
+            /* Set the properties values with object initializer syntax
+           */
+
+            var car1 = new Car()
+            {
+                Year = 2023,
+                Make = "Cadillac",
+                Model = "Escalade",
+                HasTrunk = true
+            };
+
+            
+
+            var motorcycle1 = new Motorcycle()
+            {
+                Year = 2024,
+                Make = "Harley Davidson",
+                Model = "Road King",
+                HasSideCart = false
+            };
+
+            // explicit variable type "Vehicle" using Constructors from the 2 derived classes and object initializer syntax
+
+            Vehicle vehicle1 = new Car()
+            {
+                Year = 2025,
+                Make = "Honda",
+                Model = "Passport",
+                HasTrunk = true
+            };
+
+            Vehicle vehicle2 = new Motorcycle()
+            {
+                Year = 2025,
+                Make = "Ural",
+                Model = "Expedition",
+                HasSideCart = true
+            };
+
+
 
             /*
-             * Add the 4 vehicles to the list
-             * Using a foreach loop iterate through the list and display each of the properties
-             */
+              Add the 4 vehicles to the list*/
+             
+            vehicles.Add(car1);
+            vehicles.Add(motorcycle1);
+            vehicles.Add(vehicle1);
+            vehicles.Add(vehicle2);
 
-            // Call each of the drive methods for one car and one motorcycle
+            /* Using a foreach loop iterate through the list and display each of the properties
+            */
+
+
+
+            foreach (var vehicle in vehicles)
+            {
+                Console.WriteLine($"{vehicle.Year} {vehicle.Make} {vehicle.Model}");
+                vehicle.DriveVirtual();
+                vehicle.DriveAbstract();
+                Console.WriteLine();
+            }
+
+            // Call each of the drive methods for one car and one motorcycle -- This done above in 'foreachloop"
+            
+
+
+
+
 
             #endregion            
             Console.ReadLine();
